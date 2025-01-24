@@ -1,4 +1,8 @@
 name: Build
+
+env:
+ BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 on:
   push:
     branches:
@@ -27,3 +31,7 @@ jobs:
         uses: SonarSource/sonarqube-quality-gate-action@v1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
+      - name: Build Docker image
+        run: |
+          docker build -t app-service-python-test-${{ env.BRANCH_NAME }} .
