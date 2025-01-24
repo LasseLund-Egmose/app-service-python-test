@@ -20,8 +20,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=lle-github_app-service-python-test
-            -Dsonar.organization=lle-github
+            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
       
       - name: SonarQube Quality Gate check
         uses: SonarSource/sonarqube-quality-gate-action@v1
