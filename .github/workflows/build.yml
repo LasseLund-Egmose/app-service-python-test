@@ -44,7 +44,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}/my-image:latest
+          tags: ghcr.io/lasselund-egmose/app-service-python-test/app-service-python-test:latest
 
       #- name: Build Docker Image
       #  run: |
