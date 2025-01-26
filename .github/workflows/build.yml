@@ -53,8 +53,8 @@ jobs:
       #  run: |
       #    docker build -t app-service-python-test-${{ env.BRANCH_NAME }} .
 
-      #- name: Azure Deploy
-      #  uses: azure/webapps-deploy@v2
-      #  with:
-      #    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-      #    images: ghcr.io/${{ github.repository }}/my-image:latest
+      - name: Azure Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: ghcr.io/lasselund-egmose/app-service-python-test/app-service-python-test:latest
