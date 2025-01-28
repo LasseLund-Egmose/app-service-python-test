@@ -19,13 +19,16 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
 
-      #- name: Secret Scanning
-      #  uses: gitleaks/gitleaks-action@v2
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Secret Scanning
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
+        with:
+          base-ref: "${{ github.event_name == 'push' && github.event.before || '' }}"
+          head-ref: "${{ github.event_name == 'push' && github.sha || '' }}"
 
       # TODO: Test with Semgrep as well
 
