@@ -1,8 +1,5 @@
 name: Build
 
-env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
 on:
   push:
     branches:
@@ -20,6 +17,16 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Secret Scanning
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+
+      # TODO: Test with Semgrep as well
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
