@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
 
+env_token = "8f00a51718ce9415613d51c021b1f91a"
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
