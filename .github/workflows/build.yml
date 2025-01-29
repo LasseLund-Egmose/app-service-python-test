@@ -24,11 +24,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Dependency Review
-        uses: actions/dependency-review-action@v4
-        with:
-          base-ref: "${{ github.event_name == 'push' && github.event.before || '' }}"
-          head-ref: "${{ github.event_name == 'push' && github.sha || '' }}"
+      #- name: Dependency Review
+      #  uses: actions/dependency-review-action@v4
+      #  with:
+      #    base-ref: "${{ github.event_name == 'push' && github.event.before || '' }}"
+      #    head-ref: "${{ github.event_name == 'push' && github.sha || '' }}"
+
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v41.0.10
 
       # TODO: Test with Semgrep as well
 
