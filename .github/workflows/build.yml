@@ -30,11 +30,6 @@ jobs:
       #    base-ref: "${{ github.event_name == 'push' && github.event.before || '' }}"
       #    head-ref: "${{ github.event_name == 'push' && github.sha || '' }}"
 
-      - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v41.0.10
-        with:
-          token: ${{ secrets.RENOVATE_TOKEN }}
-
       # TODO: Test with Semgrep as well
 
       - name: SonarQube Scan
