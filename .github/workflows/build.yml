@@ -67,7 +67,7 @@ jobs:
       # TODO: Maybe a security gate could be added here as well?
 
       - name: Azure Deploy
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           images: ghcr.io/lasselund-egmose/app-service-python-test/app-service-python-test:latest
